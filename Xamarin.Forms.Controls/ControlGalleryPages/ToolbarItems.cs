@@ -13,28 +13,29 @@ namespace Xamarin.Forms.Controls
 			var label = new Label { Text = "Hello ContentPage", AutomationId = "label_id" };
 
 			var command = new Command((obj) =>
-							{
-								label.Text = "tb4";
-							}, (obj) => _isEnable);
+						{
+							label.Text = "tb4";
+						}, (obj) => _isEnable);
+
 			var tb1 = new ToolbarItem("tb1", "menuIcon.png", () =>
-			{
-				label.Text = "tb1";
-			}, ToolbarItemOrder.Primary);
+					{
+						label.Text = "tb1";
+					}, ToolbarItemOrder.Primary);
 			tb1.IsEnabled = _isEnable;
 			tb1.AutomationId = "toolbaritem_primary";
 
 			var tb2 = new ToolbarItem("tb2", null, () =>
-			{
-				label.Text = "tb2";
-			}, ToolbarItemOrder.Primary);
+					{
+						label.Text = "tb2";
+					}, ToolbarItemOrder.Primary);
 			tb2.AutomationId = "toolbaritem_primary2";
 
 			var tb3 = new ToolbarItem("tb3", "bank.png", () =>
-			{
-				label.Text = "tb3";
-				_isEnable = !_isEnable;
-				command.ChangeCanExecute();
-			}, ToolbarItemOrder.Secondary);
+					{
+						label.Text = "tb3";
+						_isEnable = !_isEnable;
+						command.ChangeCanExecute();
+					}, ToolbarItemOrder.Secondary);
 			tb3.AutomationId = "toolbaritem_secondary";
 
 			var tb4 = new ToolbarItem();
