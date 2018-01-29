@@ -12,6 +12,8 @@ namespace Xamarin.Forms
 
 		static readonly BindableProperty PriorityProperty = BindableProperty.Create("Priority", typeof(int), typeof(ToolbarItem), 0);
 
+		static readonly BindableProperty PositionProperty = BindableProperty.Create("Position", typeof(ToolbarItemPosition), typeof(ToolbarItem), ToolbarItemPosition.End);
+
 		public ToolbarItem()
 		{
 		}
@@ -26,6 +28,12 @@ namespace Xamarin.Forms
 			Clicked += (s, e) => activated();
 			Order = order;
 			Priority = priority;
+		}
+
+		public ToolbarItemPosition Position
+		{
+			get { return (ToolbarItemPosition)GetValue(PositionProperty); }
+			set { SetValue(PositionProperty, value); }
 		}
 
 		[Obsolete("Name is obsolete as of version 1.3.0. Please use Text instead.")]
