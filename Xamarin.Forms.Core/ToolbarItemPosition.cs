@@ -1,8 +1,8 @@
 ﻿namespace Xamarin.Forms
 {
-    public enum ToolbarItemPosition
-    {
+	public enum ToolbarItemPosition
+	{
 		Start,
 		End
-    }
+	}
 }
