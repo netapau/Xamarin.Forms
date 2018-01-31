@@ -18,7 +18,7 @@ namespace Xamarin.Forms
 		{
 		}
 
-		public ToolbarItem(string name, string icon, Action activated, ToolbarItemOrder order = ToolbarItemOrder.Default, int priority = 0)
+		public ToolbarItem(string name, string icon, Action activated, ToolbarItemOrder order = ToolbarItemOrder.Default, int priority = 0, ToolbarItemPosition position = ToolbarItemPosition.End)
 		{
 			if (activated == null)
 				throw new ArgumentNullException("activated");
@@ -28,6 +28,7 @@ namespace Xamarin.Forms
 			Clicked += (s, e) => activated();
 			Order = order;
 			Priority = priority;
+			Position = position;
 		}
 
 		public ToolbarItemPosition Position
