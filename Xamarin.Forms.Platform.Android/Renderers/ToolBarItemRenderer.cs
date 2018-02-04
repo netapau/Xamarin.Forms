@@ -1,12 +1,10 @@
 ﻿using Android.Content;
 using Android.Views;
 using AView = Android.Views.View;
-using AToolbar = Android.Widget.Toolbar;
-
 
 namespace Xamarin.Forms.Platform.Android.Renderers
 {
-	public class ToolbarItemRenderer : PageRenderer
+	public class ToolbarItemRenderer : ViewRenderer<View,AView>
 	{
 		public Context MyContext { get; set; }
 
@@ -21,7 +19,7 @@ namespace Xamarin.Forms.Platform.Android.Renderers
 		{
 			base.OnViewAdded(child);
 
-			// Start => Ltr
+			// Start => Ltr.
 			if (Element.Position == ToolbarItemPosition.Start)
 			{
 				LayoutDirection = LayoutDirection.Ltr;
@@ -30,16 +28,6 @@ namespace Xamarin.Forms.Platform.Android.Renderers
 			{
 				LayoutDirection = LayoutDirection.Rtl;
 			}
-		}
-
-		public void OnViewAttachedToWindow(AView attachedView)
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public void OnViewDetachedFromWindow(AView detachedView)
-		{
-			throw new System.NotImplementedException();
 		}
 	}
 }
