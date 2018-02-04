@@ -35,6 +35,10 @@
 	{
 	}
 
+	internal class _ToolbarItemRenderer
+	{
+	}
+
 	internal class _ListViewRenderer
 	{
 	}

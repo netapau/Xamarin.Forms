@@ -1,7 +1,9 @@
 using System;
+using Xamarin.Forms.Platform;
 
 namespace Xamarin.Forms
 {
+	[RenderWith(typeof(_ToolbarItemRenderer))]
 	public class ToolbarItem : MenuItem
 	{
 		static readonly BindableProperty OrderProperty = BindableProperty.Create("Order", typeof(ToolbarItemOrder), typeof(ToolbarItem), ToolbarItemOrder.Default, validateValue: (bo, o) =>
@@ -34,7 +36,7 @@ namespace Xamarin.Forms
 		public ToolbarItemPosition Position
 		{
 			get { return (ToolbarItemPosition)GetValue(PositionProperty); }
-			set { SetValue(PositionProperty, value); }
+			set { SetValue(PositionProperty, value);}
 		}
 
 		[Obsolete("Name is obsolete as of version 1.3.0. Please use Text instead.")]
