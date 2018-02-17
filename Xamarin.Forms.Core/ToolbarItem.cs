@@ -3,7 +3,7 @@ using Xamarin.Forms.Platform;
 
 namespace Xamarin.Forms
 {
-	[RenderWith(typeof(_ToolbarItemRenderer))]
+	//[RenderWith(typeof(_ToolbarItemRenderer))] (#1719 ?)
 	public class ToolbarItem : MenuItem
 	{
 		static readonly BindableProperty OrderProperty = BindableProperty.Create("Order", typeof(ToolbarItemOrder), typeof(ToolbarItem), ToolbarItemOrder.Default, validateValue: (bo, o) =>
@@ -18,6 +18,7 @@ namespace Xamarin.Forms
 
 		public ToolbarItem()
 		{
+		
 		}
 
 		public ToolbarItem(string name, string icon, Action activated, ToolbarItemOrder order = ToolbarItemOrder.Default, int priority = 0, ToolbarItemPosition position = ToolbarItemPosition.End)

@@ -1,32 +1,37 @@
-﻿using Android.Content;
+﻿using System;
+using Android.Content;
 using Android.Views;
 using AView = Android.Views.View;
+using Xamarin.Forms;
+using Android.Runtime;
 
 namespace Xamarin.Forms.Platform.Android.Renderers
 {
 	public class ToolbarItemRenderer : ViewRenderer<View,AView>
 	{
-		public Context MyContext { get; set; }
 
 		public new ToolbarItem Element => this.Element;
 
 		public ToolbarItemRenderer(Context context) : base(context)
 		{
-			MyContext = context;
+			if (Element.Position == ToolbarItemPosition.Start)
+			{
+				SetForegroundGravity(GravityFlags.Start);
+			}
+
 		}
 
 		public override void OnViewAdded(AView child)
 		{
 			base.OnViewAdded(child);
 
-			// Start => Ltr.
 			if (Element.Position == ToolbarItemPosition.Start)
 			{
-				LayoutDirection = LayoutDirection.Ltr;
+				SetForegroundGravity(GravityFlags.Start);
 			}
 			else
 			{
-				LayoutDirection = LayoutDirection.Rtl;
+				SetForegroundGravity(GravityFlags.End);
 			}
 		}
 	}

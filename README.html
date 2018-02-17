@@ -1,0 +1,56 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"></head><body> 
+ <img src="banner.png" alt="Xamarin.Forms banner" height="145" >
+<h1>Xamarin.Forms</h1>
+<p>Xamarin.Forms provides a way to quickly build native apps for iOS, Android, Windows and macOS, completely in C#.</p>
+<p>Read more about the platform at https://www.xamarin.com/forms.</p>
+<h2>Build Status</h2>
+<p><img src="https://img.shields.io/teamcity/https/teamcity.xamarin.com/e/XamarinForms_Debug_Cycle8ezTest_OsxDebug.svg?style=flat&amp;label=OSX%20Debug%20%20%20%20%20" alt="OSX Debug Teamcity" title="OSX Debug" /></p>
+<p><img src="https://img.shields.io/teamcity/https/teamcity.xamarin.com/e/XamarinForms_Debug_Cycle8ezTest_WindowsDebug.svg?style=flat&amp;label=Win%20Debug%20%20%20%20%20%20" alt="Windows Debug Teamcity" title="Win Debug" /></p>
+<p><img src="https://img.shields.io/teamcity/https/teamcity.xamarin.com/e/XamarinForms_Debug_Cycle8ezTest_UiTests_OsxTestCloudPackageRunAndroid601.svg?style=flat&amp;label=UITest%20Android" alt="Android UI Tests Teamcity" title="Android UI Tests" /></p>
+<p><img src="https://img.shields.io/teamcity/https/teamcity.xamarin.com/e/XamarinForms_Debug_Cycle8ezTest_UiTests_OsxTestCloudPackageRunIOSUnifiedIOS8.svg?style=flat&amp;label=UITest%20iOS8%20%20%20%20" alt="iOS8 UI Tests Teamcity" title="iOS8 UI Tests" /></p>
+<p><img src="https://img.shields.io/teamcity/https/teamcity.xamarin.com/e/XamarinForms_Debug_Cycle8ezTest_UiTests_OsxTestCloudPackageRunIOSUnifiedIOS9.svg?style=flat&amp;label=UITest%20iOS9%20%20%20%20" alt="iOS9 UI Tests Teamcity" title="iOS9 UI Tests" /></p>
+<p><img src="https://img.shields.io/teamcity/https/teamcity.xamarin.com/e/XamarinForms_Debug_Cycle8ezTest_UiTests_OsxTestCloudPackageRunIOSUnifiedIOS10.svg?style=flat&amp;label=UITest%20iOS10%20%20" alt="iOS10 UI Tests Teamcity" title="iOS10 UI Tests" /></p>
+<p><img src="https://img.shields.io/vso/build/devdiv/0bdbc590-a062-4c3f-b0f6-9383f67865ee/6713.svg?style=flat&amp;label=VSTS%20Win%20dbg" alt="Visual Studio Team Services Windows Debug" title="Win Debug VSTS" /></p>
+<p><img src="https://img.shields.io/vso/build/devdiv/0bdbc590-a062-4c3f-b0f6-9383f67865ee/5514.svg?style=flat&amp;label=VSTS%20OSX%20dbg" alt="Visual Studio Team Services OSX Debug" title="OSX Debug VSTS" /></p>
+<h2>Getting Started</h2>
+<h5>Install Visual Studio 2015</h5>
+<p>VS 2015 is required for developing Xamarin.Forms. If you do not already have it installed, you can download it <a href="https://www.visualstudio.com/downloads/download-visual-studio-vs">here</a>. VS 2015 Community is completely free. If you are installing VS 2015 for the first time, select the &quot;Custom&quot; installation type and select the following from the features list to install:</p>
+<ul>
+<li>C#/.NET (Xamarin v4.0.3)</li>
+<li>Universal Windows App Development Tools</li>
+<li>Windows 8.1 and Windows Phone 8.0/8.1 Tools</li>
+</ul>
+<p>We also recommend installing <a href="https://www.visualstudio.com/en-us/features/msft-android-emulator-vs.aspx">Microsoft Visual Studio Emulator for Android</a> as well as <a href="https://www.microsoft.com/en-us/download/details.aspx?id=44574">Emulators for Windows Phone 8.1</a>. If you already have VS 2015 installed, you can verify that these features are installed by modifying the VS 2015 installation via the Control Panel.</p>
+<h5>Install Additional Features</h5>
+<p>After installing VS 2015, you will also need to install the following:</p>
+<ul>
+<li>Bing Maps SDK for Windows 8.1 Store apps -- you can find this in <code>Tools &gt; Extensions and Updates</code> and searching for &quot;bing&quot; in the Online pane.</li>
+<li>Android SDKs -- you can install these via <code>Tools &gt; Android &gt; Android SDK Manager</code>.</li>
+</ul>
+<h5>Solution Configuration</h5>
+<p>Upon opening the Xamarin.Forms solution, you will find that there are a number of errors and warnings under the Error List pane; you can resolve this by changing the filter of <code>Build + IntelliSense</code> to <code>Build Only</code>. At this point, you should be able to successfully build the solution.</p>
+<p>By default, the <code>Xamarin.Forms.Controls</code> project does not have a configuration for various API keys to access certain features on each platform (e.g. maps). When building the solution the first time, a <code>controlgallery.config</code> file will be generated inside that project, which looks like this:</p>
+<pre><code>UWPMapsAuthKey:
+</code></pre>
+<p>You will have to obtain your own API keys for each of these services, inserted directly after the identifier (e.g. <code>UWPMapsAuthKey:abcdefghijklmnopqrstuvwxyz</code>). You can find out how to obtain each of these as follows:</p>
+<ul>
+<li><code>UWPMapsAuthKey</code> at https://www.microsoft.com/maps/create-a-bing-maps-key.aspx</li>
+</ul>
+<p>Due to the way that Android works, the maps API key cannot be injected at runtime. As a result, you will have to add this key to the <code>MapsKey.cs</code> file under <code>Xamarin.Forms.ControlGallery.Android/Properties</code>:</p>
+<pre><code>[assembly: Android.App.MetaData(&quot;com.google.android.maps.v2.API_KEY&quot;, Value = &quot;INSERT_KEY_HERE&quot;)]
+</code></pre>
+<p>You can find out how to obtain a Google Maps API key <a href="https://developer.xamarin.com/guides/android/platform_features/maps_and_location/maps/obtaining_a_google_maps_api_key/">here</a>.</p>
+<h2>Coding Style</h2>
+<p>We follow the style used by the <a href="https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/coding-style.md">.NET Foundation</a>, with a few exceptions:</p>
+<ul>
+<li>We do not use the <code>private</code> keyword as it is the default accessibility level in C#.</li>
+<li>We use hard tabs over spaces. You can change this setting in VS 2015 via <code>Tools &gt; Options</code> and navigating to <code>Text Editor &gt; C#</code> and selecting the &quot;Keep tabs&quot; radio option. In Visual Studio for Mac it's set via preferences in <code>Source Code &gt; Code Formatting &gt; C# source code</code> and disabling the checkbox for <code>Convert tabs to spaces</code>.</li>
+<li>Lines should be limited to a max of 120 characters (or as close as possible within reason). This may be set in Visual Studio for Mac via preferences in <code>Source Code &gt; Code Formatting &gt; C# source code</code> and changing the <code>Desired file width</code> to <code>120</code>.</li>
+</ul>
+<h2>Contributing</h2>
+<ul>
+<li><a href="https://github.com/xamarin/Xamarin.Forms/wiki/How-to-Contribute">How to Contribute</a></li>
+</ul>
+<h3>Reporting Bugs</h3>
+<p>We use <a href="https://github.com/xamarin/Xamarin.Forms/issues">GitHub Issues</a> to track issues. If at all possible, please submit a <a href="https://gist.github.com/jassmith/92405c300e54a01dcc6d">reproduction of your bug</a> along with your bug report.</p>
+ </body><html>
